@@ -1,4 +1,4 @@
-version: '2'
+version: "2"
 
 services:
   tomcat:
@@ -10,19 +10,19 @@ services:
       - jms
     ports:
       - "8080:8080"
-    networks :
+    networks:
       - esnet
-
+    restart: always
   db:
     container_name: postgres
-    build : registry-postgres
+    build: registry-postgres
     ports:
       - "5432:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data
     networks:
       - esnet
-
+    restart: always
   jms:
     container_name: jms
     image: rmohr/activemq:5.14.0-alpine
@@ -30,10 +30,10 @@ services:
       - "61616:61616"
     networks:
       - esnet
-
+    restart: always
   elastic:
-    image: docker.elastic.co/elasticsearch/elasticsearch:5.2.2
     container_name: elastic
+    image: docker.elastic.co/elasticsearch/elasticsearch:5.2.2
     environment:
       - cluster.name=docker-cluster
       - bootstrap.memory_lock=true
@@ -56,6 +56,7 @@ services:
       - "9300:9300"
     networks:
       - esnet
+    restart: always
   elasticsearch2:
     image: docker.elastic.co/elasticsearch/elasticsearch:5.2.2
     container_name: elasticsearch2
@@ -79,6 +80,7 @@ services:
       - esdata2:/usr/share/elasticsearch/data
     networks:
       - esnet
+    restart: always
 
 volumes:
   esdata1:
@@ -91,3 +93,4 @@ volumes:
 networks:
   esnet:
     driver: bridge
+
