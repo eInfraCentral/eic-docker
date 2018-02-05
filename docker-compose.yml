@@ -12,7 +12,7 @@ services:
       - "8080:8080"
     networks:
       - esnet
-    restart: always
+    restart: unless-stopped
   db:
     container_name: postgres
     build: registry-postgres
@@ -22,7 +22,7 @@ services:
       - pgdata:/var/lib/postgresql/data
     networks:
       - esnet
-    restart: always
+    restart: unless-stopped
   jms:
     container_name: jms
     image: rmohr/activemq:5.14.0-alpine
@@ -30,7 +30,7 @@ services:
       - "61616:61616"
     networks:
       - esnet
-    restart: always
+    restart: unless-stopped
   elastic:
     container_name: elastic
     image: docker.elastic.co/elasticsearch/elasticsearch:5.2.2
@@ -56,7 +56,7 @@ services:
       - "9300:9300"
     networks:
       - esnet
-    restart: always
+    restart: unless-stopped
   elasticsearch2:
     image: docker.elastic.co/elasticsearch/elasticsearch:5.2.2
     container_name: elasticsearch2
@@ -80,7 +80,7 @@ services:
       - esdata2:/usr/share/elasticsearch/data
     networks:
       - esnet
-    restart: always
+    restart: unless-stopped
 
 volumes:
   esdata1:
