@@ -81,7 +81,25 @@ services:
     networks:
       - esnet
     restart: unless-stopped
-
+#  mysql:
+#    image: mysql
+#    restart: unless-stopped
+#    environment:
+#      - MYSQL_ROOT_PASSWORD=paparia
+#      - MYSQL_DATABASE=piwik
+#      - MYSQL_USER=piwik
+#      - MYSQL_PASSWORD=paparia
+#    volumes:
+#      - ./database:/var/lib/mysql
+#  piwik:
+#    image: benhutchins/piwik
+#    restart: unless-stopped
+#    links:
+#      - mysql
+#    ports:
+#      - 8006:8006
+#    volumes:
+#      - ./config:/var/www/html/config:rw
 volumes:
   esdata1:
     driver: local
