@@ -1,4 +1,3 @@
 CREATE USER vrasidas WITH PASSWORD 'paparia';
 
-CREATE DATABASE registry;
-GRANT ALL PRIVILEGES ON DATABASE registry TO vrasidas;
+CREATE DATABASE registry WITH OWNER vrasidas;
