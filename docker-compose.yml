@@ -10,7 +10,7 @@ services:
       - jms
     ports:
       - "8080:8080"
-    env_file:
+#    env_file:
 #      - docker.env
 #      - secret.env
     networks:
@@ -97,4 +97,3 @@ volumes:
 networks:
   esnet:
     driver: bridge
-
